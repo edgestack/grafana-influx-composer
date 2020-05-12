@@ -17,7 +17,16 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
-
+  chronograf:
+    build: chronograf
+    env_file: configuration.env
+    links:
+      - influxdb
+    ports:
+      - '8888:8888'
+    volumes:
+      - chronograf_data:/var/lib/chronograf
 volumes:
   grafana_data: {}
   influxdb_data: {}
+  chronograf_data: {}
