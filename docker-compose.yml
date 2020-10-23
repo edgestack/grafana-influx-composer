@@ -1,4 +1,4 @@
-version: '3.2'
+version: '2'
 
 services:
   influxdb:
@@ -8,6 +8,7 @@ services:
       - '8086:8086'
     volumes:
       - influxdb_data:/var/lib/influxdb
+    restart: always
   grafana:
     build: grafana
     env_file: configuration.env
@@ -17,6 +18,7 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
+    restart: always
   chronograf:
     build: chronograf
     env_file: configuration.env
@@ -26,6 +28,7 @@ services:
       - '8888:8888'
     volumes:
       - chronograf_data:/var/lib/chronograf
+    restart: always
 volumes:
   grafana_data: {}
   influxdb_data: {}
